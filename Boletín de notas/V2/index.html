@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boletín de Notas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Boletín de Notas</h1>
+    <p>Alumno: 
+        <select id="alumno">
+            <option value="Carmen Trujillo">Carmen Trujillo</option>
+            <option value="Santi Trujillo">Santi Trujillo</option>
+            <option value="Cristina Conde">Cristina Conde</option>
+            <option value="Ángel Moya">Ángel Moya</option>
+            <option value="Lunna Villalta">Lunna Villalta</option>
+        </select>
+    </p>
+    <div id="notas" ></div>
+    <button id="btn-cargar">Cargar notas</button>
+    <button id="btn-borrar" class="disabled" disabled>Borrar notas</button>
+
+    <div id="acciones">
+        <br>
+        <button class="accion disabled" id="btn-media" disabled>Media</button>
+        <p id="resultado-media"></p>
+        <button class="accion disabled" id="btn-nota-alta" disabled>Nota más alta</button>
+        <p id="resultado-alta"></p>
+        <button class="accion disabled" id="btn-nota-baja" disabled>Nota más baja</button>
+        <p id="resultado-baja"></p>
+        <button class="accion disabled" id="btn-suspenso" disabled>¿Hubo algún suspenso?</button>
+        <p id="resultado-suspenso"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
