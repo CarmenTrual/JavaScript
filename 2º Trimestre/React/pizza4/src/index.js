@@ -2,12 +2,60 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
+
+const pizzaData = [
+  {
+    name: "Focaccia",
+    ingredients: "Bread with italian olive oil and rosemary",
+    price: 6,
+    photoName: "pizzas/focaccia.jpg",
+    soldOut: false,
+  },
+  {
+    name: "Pizza Margherita",
+    ingredients: "Tomato and mozarella",
+    price: 10,
+    photoName: "pizzas/margherita.jpg",
+    soldOut: false,
+  },
+  {
+    name: "Pizza Spinaci",
+    ingredients: "Tomato, mozarella, spinach, and ricotta cheese",
+    price: 12,
+    photoName: "pizzas/spinaci.jpg",
+    soldOut: false,
+  },
+  {
+    name: "Pizza Funghi",
+    ingredients: "Tomato, mozarella, mushrooms, and onion",
+    price: 12,
+    photoName: "pizzas/funghi.jpg",
+    soldOut: false,
+  },
+  {
+    name: "Pizza Salamino",
+    ingredients: "Tomato, mozarella, and pepperoni",
+    price: 15,
+    photoName: "pizzas/salamino.jpg",
+    soldOut: true,
+  },
+  {
+    name: "Pizza Prosciutto",
+    ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
+    price: 18,
+    photoName: "pizzas/prosciutto.jpg",
+    soldOut: false,
+  },
+];
+
+
+
 function App() {
   return (
     <div>
-    <Header/>
-    <Menu/>
-    <Footer/>
+    <Header />
+    <Menu />
+    <Footer />
     </div>
   );
 }
@@ -15,48 +63,71 @@ function App() {
 function Header() {
   /*const style = {color:"red", fontSize:"48px", textTransform:"uppercase"}*/ 
   return (
-  <header className="header">
+  <header  className="header">
     <h1>Pizzería La Coracha</h1>
       </header>);
 }
 
 function Menu() {
+
+  
+
   return (
   <main className="menu">
     <h2>Menú</h2>
     <p>Desde 1984</p>
-    <Pizza1/>
-    <Pizza2/>
+    
+    <ul className="Pizzas">
+    {pizzaData.map((itemPizza) => 
+    <Pizza 
+    imagen={itemPizza.photoName}
+    nombre={itemPizza.name}
+    ingredientes={itemPizza.ingredients}
+    precio={itemPizza.price}
+    />)
+    }
+    </ul>
+
+    {/*Forma 1 - con props
+    <Pizza imagen="pizzas/funghi.jpg" nombre="Funghi" ingredientes="Tomate y queso" precio={50}/> 
+    <Pizza imagen="pizzas/focaccia.jpg" nombre="Focaccia" ingredientes="Queso y pimienta" precio={100}/> 
+    <Pizza imagen="pizzas/salamino.jpg" nombre="Salamino" ingredientes="Tomate, queso y salami" precio={100}/>
+    */}
+
   </main>
   );
 }
 
-function Pizza1() {
+/*Forma 1 - con props
+{function Pizza(props) {
   return (
-  <div className="pizza">
-    <img src="pizzas/funghi.jpg" alt="Funghi"/>
-    <h2>Funghi</h2>
-    <p>Pizza de funghi con salsa de tomate y queso parmesano.</p>
-    <p>{50}€</p>
-  </div>);
+  <li className="pizza">
+    <img src={props.imagen}alt={props.nombre}/>
+    <h2>{props.nombre}</h2>
+    <p>{props.ingredientes}</p>
+    <p>{props.precio}€</p>
+  </li>);
+}}
+*/
+
+function Pizza({imagen, nombre, ingredientes, precio}) {
+  return (
+  <li className="pizza">
+    <img src={imagen}alt={nombre}/>
+    <h2>{nombre}</h2>
+    <p>{ingredientes}</p>
+    <p>{precio}€</p>
+  </li>);
 }
 
-function Pizza2() {
-  return (
-  <div className="pizza">
-    <img src="pizzas/focaccia.jpg" alt="Focaccia"/>
-    <h2>Focaccia</h2>
-    <p>Focaccia Caccio Pepe.</p>
-    <p>{100}€</p>
-  </div>);
-}
+
 
 function Footer() {
   return (
   <footer className="footer">
     <div className="order">
     <p>Tel: +34 12345678</p>
-    <button>order</button>
+    <button>Hacer pedido</button>
     </div>
   </footer>);
 }
